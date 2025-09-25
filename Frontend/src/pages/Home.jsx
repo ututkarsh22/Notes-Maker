@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import imageDelete from '../assets/deleteImg.png';
-import {Link } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 
@@ -12,6 +12,8 @@ const Home = () => {
 
     const[notes,setNotes] = useState([]);
     const[isLoading,setLoading] = useState(false);
+    const navigate = useNavigate();
+
     useEffect(()=>{
         
         const fetchNotes = async() => {
@@ -51,6 +53,10 @@ const Home = () => {
       }
     }
 
+    const openPage = (id) =>{
+      navigate(`/noteDetail/${id}`);
+    }
+
  return (
   <div className='min-h-screen text-white'>
     <Navbar/>
@@ -63,6 +69,7 @@ const Home = () => {
           <div
             key={ind}
             className={`bg-green-900  p-2 border border-black rounded-lg shadow-xl shadow-gray-600 ${notes.length > 4 ? " " : "lg:h-[40%]"}`}
+            onClick={()=>openPage(note._id)}
           >
            <div className=' h-[100%] flex flex-col justify-between'>
             <div className=' h-[100%] flex flex-col gap-4'>

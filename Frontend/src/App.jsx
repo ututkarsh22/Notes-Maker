@@ -1,9 +1,8 @@
-import React from 'react'
-import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import { Route, Routes } from 'react-router-dom'
 import NewPost from './pages/NewPost'
 import UpdatePost from './pages/UpdatePost'
+import GetNoteDetail from './pages/getNoteDetail'
 
 
 const App = () => {
@@ -14,6 +13,7 @@ const App = () => {
       <Route  path="/" element={<Home/>}/>
       <Route  path="/newPost" element={<NewPost/>}/>
       <Route  path="/editPost/:id" element={<UpdatePost/>}/>
+      <Route  path="/noteDetail/:id" element={<GetNoteDetail/>}/>
     </Routes>
     
     
